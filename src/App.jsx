@@ -1,9 +1,11 @@
-import Navbar from "./components/Navbar";
+import Home from "./pages/Home";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   return (
     <div>
-      <Navbar/>
+      <Home/>
+      <Toaster/>
     </div>
   );
 }

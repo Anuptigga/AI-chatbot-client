@@ -13,13 +13,15 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { login, signUp } from "@/services/auth";
 import { useState } from "react";
-import {toast} from "sonner"
+import { toast } from "sonner";
+import useAuth from "@/hooks/useAuth"; // <-- Add this import
 
 export function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", password: "" });
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
+  const { handleUserLogin } = useAuth(); // <-- Add this line
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -30,15 +32,16 @@ export function Login() {
     setError("");
     try {
       if (isSignup) {
-        await signUp(form.name, form.email, form.password);
-        toast.success("SignUp successfll!")
-        setOpen(false);// Close the dialog after successful signup
+        const res = await signUp(form.name, form.email, form.password);
+        handleUserLogin(res.user); // <-- Add this line
+        toast.success("SignUp successfll!");
+        setOpen(false); // Close the dialog after successful signup
       } else {
-        await login(form.email, form.password);
-        toast.success("Login successfull!")
-        setOpen(false);// Close the dialog after successful login
+        const res = await login(form.email, form.password);
+        handleUserLogin(res.user); // <-- Add this line
+        toast.success("Login successfull!");
+        setOpen(false); // Close the dialog after successful login
       }
-      
     } catch (err) {
       setError(err.response?.data?.message || err.message || "Error");
       toast.error(err.response?.data?.message || err.message || "Error");

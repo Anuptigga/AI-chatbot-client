@@ -5,6 +5,7 @@ export const login= async(email,password)=>{
         const response = await axios.post("/auth/login",{email,password})
         const {token, user}= response.data
         localStorage.setItem("token",token)
+        localStorage.setItem("user",JSON.stringify(user))
         return response.data;
     } catch (error) {
         console.error("Login failed",error.response?.data||error.message)
@@ -21,6 +22,7 @@ export const signUp=async(name,email,password)=>{
         const response = await axios.post("/auth/signup",{name,email,password})
         const{ token, user} =response.data
         localStorage.setItem('token',token)
+        localStorage.setItem('user',JSON.stringify(user))
         return response.data
     } catch (error) {
         console.error("Signup failed:", error.response?.data || error.message);

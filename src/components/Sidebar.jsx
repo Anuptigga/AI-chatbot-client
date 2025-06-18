@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllChats } from "@/services/chatService";
 import useChat from "@/hooks/useChat";
+import useAuth from "@/hooks/useAuth";
 import {
   Sheet,
   SheetContent,
+  SheetDescription,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
@@ -13,12 +15,18 @@ import { SidebarIcon, Plus } from "lucide-react";
 function Sidebar() {
   const [chats, setChats] = useState([]);
   const { selectedChatId, handleSelectChat, handleNewChat } = useChat();
+  const {isLogin} = useAuth();
 
   useEffect(() => {
-    getAllChats()
-      .then((data) => setChats(data))
-      .catch(() => setChats([]));
-  }, []);
+    if(isLogin){
+      getAllChats()
+        .then((data) => setChats(data))
+        .catch(() => setChats([]));
+    }
+    else{
+      setChats([]);
+    }
+  }, [isLogin]);
 
   return (
     <Sheet>
@@ -30,6 +38,9 @@ function Sidebar() {
       <SheetContent side="left" className="w-72">
         <SheetHeader>
           <SheetTitle>Chats</SheetTitle>
+          <SheetDescription>
+            Select a chat to view messages or start a new chat. 
+            </SheetDescription>
         </SheetHeader>
         <div className="flex flex-col gap-2 mt-4">
           <button

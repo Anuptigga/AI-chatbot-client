@@ -12,7 +12,7 @@ export const getSingleChat = async (chatId) => {
   return res.data;
 };
 
-// Send a prompt to the AI (create or continue chat)
+// Send a prompt to the AI model
 export const sendPrompt = async ({ prompt, chatId }) => {
   const res = await axios.post(
     "/openrouter/query",
@@ -22,12 +22,28 @@ export const sendPrompt = async ({ prompt, chatId }) => {
   return res.data;
 };
 
-// Start a new chat (by sending a prompt without chatId)
+// Start a new chat
 export const startNewChat = async (prompt) => {
   const res = await axios.post(
     "/openrouter/query",
     { prompt },
     { withCredentials: true }
   );
+  return res.data;
+};
+
+// Update chat title
+export const updateChatTitle = async (chatId, title) => {
+  const res = await axios.put(
+    `/chat/${chatId}`,
+    { title },
+    { withCredentials: true }
+  );
+  return res.data;
+};
+
+// Delete chat
+export const deleteChat = async (chatId) => {
+  const res = await axios.delete(`/chat/${chatId}`, { withCredentials: true });
   return res.data;
 };

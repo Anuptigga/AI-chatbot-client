@@ -1,10 +1,10 @@
-// Chat.tsx
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { getSingleChat } from "@/services/chatService";
 import useChat from "@/hooks/useChat";
 
 function Chat() {
   const { selectedChatId, messages, setMessages } = useChat();
+  const bottomRef = useRef(null);
 
   useEffect(() => {
     if (selectedChatId) {
@@ -15,6 +15,12 @@ function Chat() {
       setMessages([]);
     }
   }, [selectedChatId, setMessages]);
+
+  useEffect(()=>{
+    if(bottomRef.current){
+      bottomRef.current.scrollIntoView({behaviour:"smooth"})
+    }
+  },[messages]);
 
   return (
     <div className="w-[95%] lg:w-[60%] mx-auto pt-20 pb-40">
@@ -50,6 +56,7 @@ function Chat() {
           </div>
         </div>
       ))}
+      <div ref={bottomRef}/>
     </div>
   );
 }

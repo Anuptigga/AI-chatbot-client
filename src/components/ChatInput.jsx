@@ -11,12 +11,21 @@ import useChat from "@/hooks/useChat";
 function ChatInput() {
   const [prompt, setPrompt] = useState("");
   const [loading, setLoading] = useState(false);
-  const { selectedChatId, setSelectedChatId, setMessages } = useChat();
+  const { selectedChatId, setSelectedChatId, messages, setMessages } = useChat();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!prompt.trim()) return;
     setLoading(true);
+
+    const optimisticMessage = {
+      _id: Date.now(),
+      role: "user",
+      content: prompt,
+      time: new Date().toISOString(),
+    };
+    setMessages([...messages, optimisticMessage]);
+
     try {
       let data;
       if (selectedChatId) {
@@ -35,6 +44,7 @@ function ChatInput() {
     } catch (error) {
       console.error("Error sending prompt:", error);
       alert("Failed to send message. Please try again.");
+      setMessages((msgs) => msgs.filter((msg) => msg._id !== optimisticMessage._id));
     } finally {
       setLoading(false);
     }
@@ -51,7 +61,7 @@ function ChatInput() {
           disabled={loading}
         />
         <Button type="submit" disabled={loading}>
-          {loading ? "Sending.." : "Send"}
+          {loading ? "Wait..." : "Send"}
         </Button>
       </form>
       <p className="text-xs text-muted-foreground text-center mt-2">

@@ -40,7 +40,7 @@ export function Login() {
         const res = await login(form.email, form.password);
         handleUserLogin(res.user);
         if (res.user && res.user.isAdmin === true) {
-          window.location.href = "/about";
+          window.location.href = "/stats";
         }
         toast.success("Login successfull!");
         setOpen(false);

@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { toast } from "sonner";
 
 export const AuthContext = createContext();
 
@@ -19,6 +20,7 @@ export function AuthProvider({ children }) {
     setIsLogin(true);
     setUser(userData);
     localStorage.setItem("user", JSON.stringify(userData));
+    
   };
 
   const handleUserLogout = () => {
@@ -26,6 +28,7 @@ export function AuthProvider({ children }) {
     setUser(null);
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    toast.success("Logout successful!");
   };
 
   return (

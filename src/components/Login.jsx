@@ -39,6 +39,9 @@ export function Login() {
       } else {
         const res = await login(form.email, form.password);
         handleUserLogin(res.user);
+        if (res.user && res.user.isAdmin === true) {
+          window.location.href = "/about";
+        }
         toast.success("Login successfull!");
         setOpen(false);
       }

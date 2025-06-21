@@ -1,7 +1,7 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Home from "./pages/Home";
-import About from "./pages/About";
 import { Toaster } from "./components/ui/sonner";
+import Stats from "./pages/Stats";
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       <Toaster />
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/about" element={<About/>}/>
+        <Route path="/stats" element={<Stats/>}/>
       </Routes>
     </Router>
   );

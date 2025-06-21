@@ -1,12 +1,61 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# 🤖 AI Chatbot web app
+A full-stack AI cahtbot web app simillar to chatgpt built with modern technologies, real time interactions and OpenRouter based AI model which can easily be swapped with any other model.
 
-Currently, two official plugins are available:
+## ✨ Features
+🔐 User Authentication
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+💬 Chat interface with contextual conversation
 
-## Expanding the ESLint configuration
+📚 Chat history saved
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+⚡Real time updates
+
+📈Admin panel for monitoring
+
+🤝OpenRouter integration for multi model integration
+
+## 🛠️ Tech stack
+### Frontend
+React
+
+Tailwind CSS
+
+shadcn ui
+
+React Router
+
+Axios
+### Backend
+Node.js
+
+Express
+
+MongoDB
+
+JWT for authentication
+
+OpenRouter API for AI responses
+
+## 🚀 Getting started
+### Clone the repository 
+``` git clone ```
+### Setup .env file
+To run this project, you will need to add the following environment variables to your .env file
+
+`PORT`
+
+`MONGO_URI`
+
+`JWT_SECRET`
+
+`OPENROUTER_API_KEY`
+
+### Start the server
+```npm run dev```
+
+## 🖼️Screenshots
+![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
+
+## Links
+[Link](https://www.google.com)

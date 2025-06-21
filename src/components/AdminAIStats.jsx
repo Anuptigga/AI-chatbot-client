@@ -10,20 +10,14 @@ function AdminAIStats() {
 
   if (!stats)
     return (
-      <div className="p-6 max-w-2xl mx-auto">
-        <div className="rounded-lg shadow bg-background p-6">
-          <div className="h-6 w-1/2 bg-muted rounded mb-2 animate-pulse" />
-          <div className="h-6 w-1/2 bg-muted rounded mb-2 animate-pulse" />
-          <div className="h-6 w-1/2 bg-muted rounded mb-2 animate-pulse" />
-          <div className="h-8 w-full bg-muted rounded mb-4 animate-pulse" />
-          <div className="h-8 w-full bg-muted rounded animate-pulse" />
-        </div>
+      <div className="flex justify-center items-center h-screen">
+        <p className="font-bold text-3xl">You are not Authorized !</p>
       </div>
     );
 
   return (
-    <div className="p-6 max-w-2xl mx-auto">
-      <div className="rounded-lg shadow bg-gray-300 p-6">
+    <div className="mt-20 p-6 max-w-2xl mx-auto rounded-xl">
+      <div className="rounded-lg shadow bg-background p-6 border-2">
         <h2 className="text-xl font-bold mb-6 text-foreground">
           AI Usage Stats
         </h2>

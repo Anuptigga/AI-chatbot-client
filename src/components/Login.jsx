@@ -15,6 +15,7 @@ import { login, signUp } from "@/services/auth";
 import { useState } from "react";
 import { toast } from "sonner";
 import useAuth from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export function Login() {
   const [isSignup, setIsSignup] = useState(false);
@@ -22,6 +23,7 @@ export function Login() {
   const [error, setError] = useState("");
   const [open, setOpen] = useState(false);
   const { handleUserLogin } = useAuth();
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -40,7 +42,7 @@ export function Login() {
         const res = await login(form.email, form.password);
         handleUserLogin(res.user);
         if (res.user && res.user.isAdmin === true) {
-          window.location.href = "/stats";
+          navigate("/stats");
         }
         toast.success("Login successfull!");
         setOpen(false);

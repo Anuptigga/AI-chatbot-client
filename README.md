@@ -2,6 +2,14 @@
 # 🤖 AI Chatbot web app
 A full-stack AI cahtbot web app simillar to chatgpt built with modern technologies, real time interactions and OpenRouter based AI model which can easily be swapped with any other model.
 
+## 🖼️ Preview
+![login](./screenshots/login.png)
+![chats](./screenshots/chats.png)
+![dashboard](./screenshots/dashboard.png)
+![login](./screenshots/lightmode.png)
+![admin](./screenshots/admin.png)
+
+
 ## ✨ Features
 🔐 User Authentication
 
@@ -53,9 +61,6 @@ To run this project, you will need to add the following environment variables to
 
 ### Start the server
 ```npm run dev```
-
-## 🖼️Screenshots
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
 
 ## Links
 [Link](https://www.google.com)
